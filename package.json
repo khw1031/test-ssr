@@ -4,16 +4,25 @@
   "main": "index.js",
   "author": "khw1031 <khw1031@gmail.com>",
   "license": "MIT",
+  "scripts": {
+    "build-server": "babel src --out-dir dist-server --config-file ./.babelrc.server.js",
+    "build": "yarn run build-server && webpack",
+    "start": "node dist-server/server.js"
+  },
   "dependencies": {
     "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+    "react-dom": "^17.0.2",
+    "styled-components": "^5.2.3"
   },
   "devDependencies": {
+    "@babel/cli": "^7.13.16",
     "@babel/core": "^7.13.16",
+    "@babel/plugin-transform-modules-commonjs": "^7.14.0",
     "@babel/preset-env": "^7.13.15",
     "@babel/preset-react": "^7.13.13",
     "babel-loader": "^8.2.2",
     "clean-webpack-plugin": "^4.0.0-alpha.0",
+    "express": "^4.17.1",
     "html-webpack-plugin": "^5.3.1",
     "webpack": "^5.36.1",
     "webpack-cli": "^4.6.0"

@@ -2,4 +2,9 @@ import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
 
-ReactDOM.render(<App page="home" />, document.querySelector("#root"));
+const initialData = window.__INITIAL_DATA__;
+
+ReactDOM.hydrate(
+  <App page={initialData.page} />,
+  document.querySelector("#root")
+);

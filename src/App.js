@@ -1,6 +1,12 @@
 import React, { useEffect, useState } from "react";
+import styled from "styled-components";
 import About from "./About";
 import Home from "./Home";
+
+const Container = styled.div`
+  background-color: #aaa;
+  border: 1px solid blue;
+`;
 
 export default function App({ page }) {
   const [pageState, setPageState] = useState(page);
@@ -12,16 +18,20 @@ export default function App({ page }) {
 
   function onChangePage(e) {
     const newPage = e.target.dataset.page;
-    window.history.pushState(newPage, '', `/${newPage}`);
+    window.history.pushState(newPage, "", `/${newPage}`);
     setPage(newPage);
   }
 
   const PageComponent = pageState === "home" ? Home : About;
   return (
-    <div className="container">
-      <button data-page="home" onClick={onChangePage}>Home</button>
-      <button data-page="about" onClick={onChangePage}>About</button>
+    <Container>
+      <button data-page="home" onClick={onChangePage}>
+        Home
+      </button>
+      <button data-page="about" onClick={onChangePage}>
+        About
+      </button>
       <PageComponent />
-    </div>
-  )
+    </Container>
+  );
 }
